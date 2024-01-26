@@ -1,0 +1,52 @@
+{% extends "layout1.html" %}
+
+{%block content %}
+<div class="row">
+        <div class="col-md-6">
+            <form action="/resultado" method="POST" class="form">
+                <div class="form-group">
+                    <label for="n1">N1:</label>
+                    <input type="text" name="n1" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="n2">N2:</label>
+                    <input type="text" name="n2" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <div class="form-check">
+                        <input type="radio" name="radioOption" value="suma" class="form-check-input">
+                        <label class="form-check-label">Suma</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" name="radioOption" value="resta" class="form-check-input">
+                        <label class="form-check-label">Resta</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" name="radioOption" value="multi" class="form-check-input">
+                        <label class="form-check-label">Multiplicación</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="radio" name="radioOption" value="div" class="form-check-input">
+                        <label class="form-check-label">División</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Calcular</button>
+            </form>
+        </div>
+   
+        <div class="col-md-6">
+                <div class="resultado">
+                    <h2>Resultado:</h2>
+                    <p>{{ resultado }}</p>
+                </div>
+           
+        </div>
+    
+</div>
+
+
+
+{%endblock%}
+           
