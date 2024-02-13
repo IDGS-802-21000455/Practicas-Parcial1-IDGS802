@@ -4,3 +4,10 @@
 <dd>{{field(**kwargs)|safe}}</dd>
 
 {%endmacro%}
+
+{%macro resistencia_form(field)%}
+
+<td>{{field.label}}</td>
+<dd>{{field(**kwargs)|safe}}</dd>
+
+{%endmacro%}

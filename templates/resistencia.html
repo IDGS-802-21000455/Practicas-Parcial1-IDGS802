@@ -1,0 +1,46 @@
+{% extends "layout1.html" %}
+
+{% block content %}
+    {% import "_macros.html" as macros %}
+
+    <h1>Resistencia</h1>
+
+    <form action="/resistencia" method="post">
+        {{ macros.resistencia_form(form.color1, class="form-control") }}
+        {{ macros.resistencia_form(form.color2, class="form-control") }}
+        {{ macros.resistencia_form(form.color3, class="form-control") }}
+        {{ macros.resistencia_form(form.tolerancia, class="form-control") }}
+
+        <input type="submit" name="btn1">
+    </form>
+
+    <h1>Resultado:</h1>
+
+    {% if resultado_resistencia %}
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Color 1</th>
+                    <th>Color 2</th>
+                    <th>Color 3</th>
+                    <th>Tolerancia</th>
+                    <th>Valor de Resistencia (ohms)</th>
+                    <th>Valor Mínimo (ohms)</th>
+                    <th>Valor Máximo (ohms)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="background-color: {{ color_codes.get(form.color1.data | lower, '#FFFFFF') }};">{{ form.color1.data }}</td>
+                    <td style="background-color: {{ color_codes.get(form.color2.data | lower, '#FFFFFF') }};">{{ form.color2.data }}</td>
+                    <td style="background-color: {{ color_codes.get(form.color3.data | lower, '#FFFFFF') }};">{{ form.color3.data }}</td>
+                    <td style="background-color: {{ color_codes.get(color_resistencia.lower(), '#FFFFFF') }};">{{ color_resistencia }} {{ porcentaje_tolerancia }}%</td>
+                    <td>{{ resultado_resistencia }}</td>
+                    <td>{{ minvalor }}</td>
+                    <td>{{ maxvalor }}</td>
+                </tr>
+            </tbody>
+        </table>
+    {% endif %}
+
+    {% endblock %}
